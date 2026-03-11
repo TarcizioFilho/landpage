@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonte Luxuosa -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<title>AeroLux - Refrigeração e Climatização</title>
+
+<style>
+/* Reset e base */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #F9FAFB;
+  color: #1F2937;
+}
+
+/* Cabeçalho */
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  background:#000;
+  border-bottom:2px solid #3B82F6;
+  position: sticky;
+  top:0;
+  z-index: 100;
+}
+
+header img {
+  width:150px;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size:28px;
+  color:#3B82F6;
+  margin-left:10px;
+}
+
+nav a {
+  color: #FFFFFF;
+  text-decoration:none;
+  margin-left:30px;
+  font-size:16px;
+  font-weight:500;
+}
+
+nav a:hover { color:#3B82F6; }
+
+/* Botões de idioma */
+.lang-switch {
+  margin-left:20px;
+}
+
+.lang-switch button {
+  background:#3B82F6;
+  color:#fff;
+  border:none;
+  padding:5px 10px;
+  border-radius:5px;
+  cursor:pointer;
+  margin-left:5px;
+  font-size:14px;
+}
+
+.lang-switch button.active { background:#2563EB; }
+
+/* Hero */
+.hero {
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  background: linear-gradient(180deg, #FFFFFF, #E5E7EB);
+}
+
+.hero h1 { font-family: 'Playfair Display', serif; font-size:48px; color:#111827; margin-bottom:20px; }
+.hero p { font-size:20px; max-width:700px; margin-bottom:30px; color:#374151; }
+
+/* Botões */
+.btn {
+  padding:15px 35px;
+  background:#3B82F6;
+  color:#fff;
+  font-size:18px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s;
+}
+.btn:hover { background:#2563EB; }
+
+/* Seções */
+.services,
+.about,
+.contact { padding:80px 8%; text-align:center; background:#FFFFFF; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight:700;
+  color:#111827;
+  letter-spacing:1px;
+  margin-bottom:20px;
+}
+
+.services h2,
+.about h2,
+.contact h2 { font-size:36px; margin-bottom:50px; }
+
+/* Cards */
+.cards { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
+
+.card {
+  background:#F3F4F6;
+  padding:35px;
+  border-radius:12px;
+  width:280px;
+  box-shadow:0 8px 20px rgba(59,130,246,0.3);
+  border:1px solid #3B82F6;
+  transition:0.3s;
+  color:#1F2937;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow:0 12px 25px rgba(59,130,246,0.5);
+}
+
+.card h3 { font-size:22px; color:#3B82F6; margin-bottom:15px; }
+
+.about p, .contact p { color:#374151; font-size:18px; line-height:1.6; }
+
+/* Footer */
+footer { background:#000; color:#cbd5e1; text-align:center; padding:35px; border-top:2px solid #3B82F6; }
+
+/* WhatsApp */
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25d366;
+  color:white;
+  padding:15px 18px;
+  border-radius:50%;
+  font-size:22px;
+  text-decoration:none;
+  z-index:100;
+}
+
+/* Modal */
+.modal {
+  display:none; 
+  position:fixed; 
+  z-index:1000; 
+  left:0; top:0;
+  width:100%; height:100%;
+  overflow:auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background:#FFFFFF;
+  margin:10% auto;
+  padding:30px;
+  border:1px solid #3B82F6;
+  width:90%;
+  max-width:500px;
+  border-radius:12px;
+  color:#1F2937;
+  text-align:left;
+  box-shadow:0 8px 25px rgba(59,130,246,0.3);
+}
+
+.modal-content h2 { font-family:'Playfair Display', serif; font-size:28px; color:#111827; margin-bottom:20px; text-align:center; }
+.modal-content label { display:block; margin:15px 0 5px; }
+
+.modal-content input,
+.modal-content textarea {
+  width:100%; padding:10px;
+  border:1px solid #3B82F6;
+  border-radius:6px;
+  background:#F9FAFB;
+  color:#1F2937;
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus { outline:none; border-color:#2563EB; }
+
+.modal-content .btn { width:100%; margin-top:15px; }
+
+.close { color:#111827; float:right; font-size:28px; font-weight:bold; cursor:pointer; }
+.close:hover { color:#3B82F6; }
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div style="display:flex; align-items:center;">
+    <img src="logo2.png" alt="AeroLux Logo">
+    <h1>AeroLux</h1>
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+
+    <span class="lang-switch">
+      <button id="ptBtn" class="active">PT</button>
+      <button id="enBtn">EN</button>
+    </span>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1 class="pt-text">Conforto e Climatização com Qualidade</h1>
+  <h1 class="en-text" style="display:none;">Comfort and Quality Air Conditioning</h1>
+  
+  <p class="pt-text">A Aero Lux é especializada em soluções de refrigeração e climatização para residências e empresas. Trabalhamos com instalação, manutenção e reparação de sistemas de ar condicionado, garantindo conforto, eficiência e qualidade.</p>
+  <p class="en-text" style="display:none;">Aero Lux specializes in refrigeration and air conditioning solutions for homes and businesses. We provide installation, maintenance, and repair of air conditioning systems, ensuring comfort, efficiency, and quality.</p>
+  
+  <button class="btn pt-text" id="openFormBtn">Pedir Orçamento</button>
+  <button class="btn en-text" id="openFormBtnEn" style="display:none;">Request a Quote</button>
+  
+  <button class="btn" onclick="window.location.href='https://wa.me/351SEUNUMERO'">Chat on WhatsApp</button>
+
+  <!-- Modal Form -->
+  <div id="budgetFormModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      
+      <h2 class="pt-text">Pedir Orçamento</h2>
+      <h2 class="en-text" style="display:none;">Request a Quote</h2>
+      
+      <form id="budgetForm">
+        <label class="pt-text" for="name">Nome *</label>
+        <label class="en-text" for="name" style="display:none;">Full Name *</label>
+        <input type="text" id="name" name="name" required>
+
+        <label class="pt-text" for="email">E-mail *</label>
+        <label class="en-text" for="email" style="display:none;">Email *</label>
+        <input type="email" id="email" name="email" required>
+
+        <label class="pt-text" for="phone">Telemóvel *</label>
+        <label class="en-text" for="phone" style="display:none;">Phone *</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label class="pt-text" for="location">Localização *</label>
+        <label class="en-text" for="location" style="display:none;">Location *</label>
+        <input type="text" id="location" name="location" required>
+
+        <label class="pt-text" for="details">Informações Adicionais *</label>
+        <label class="en-text" for="details" style="display:none;">Additional Information *</label>
+        <textarea id="details" name="details" rows="4" required></textarea>
+
+        <button type="submit" class="btn pt-text">Enviar</button>
+        <button type="submit" class="btn en-text" style="display:none;">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <h2 class="pt-text">Nossos Serviços</h2>
+  <h2 class="en-text" style="display:none;">Our Services</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3 class="pt-text">Instalação de Ar Condicionado</h3>
+      <h3 class="en-text" style="display:none;">Air Conditioning Installation</h3>
+      <p class="pt-text">Instalação de sistemas de ar condicionado para residências, empresas e espaços comerciais, garantindo máximo desempenho.</p>
+      <p class="en-text" style="display:none;">Professional installation of air conditioning systems for homes, businesses, and commercial spaces, ensuring maximum performance.</p>
+    </div>
+    <div class="card">
+      <h3 class="pt-text">Manutenção</h3>
+      <h3 class="en-text" style="display:none;">Maintenance</h3>
+      <p class="pt-text">Manutenção preventiva e corretiva para prolongar a vida útil dos equipamentos, melhorar eficiência energética e garantir ar mais saudável.</p>
+      <p class="en-text" style="display:none;">Preventive and corrective maintenance to extend the life of equipment, improve energy efficiency, and ensure healthier air.</p>
+    </div>
+    <div class="card">
+      <h3 class="pt-text">Reparação</h3>
+      <h3 class="en-text" style="display:none;">Repair</h3>
+      <p class="pt-text">Diagnóstico e reparação de avarias em sistemas de climatização, resolvendo problemas como falhas de funcionamento ou vazamentos.</p>
+      <p class="en-text" style="display:none;">Diagnosis and repair of air conditioning and climate control system issues, resolving malfunctions and leaks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <h2 class="pt-text">Sobre a AeroLux</h2>
+  <h2 class="en-text" style="display:none;">About AeroLux</h2>
+  <p class="pt-text">A Aero Lux nasceu com o objetivo de oferecer serviços de climatização com qualidade, confiança e profissionalismo. Mesmo sendo uma empresa em crescimento, trabalhamos com dedicação para garantir a satisfação dos nossos clientes. A nossa prioridade é oferecer soluções eficientes, seguras e adaptadas às necessidades de cada cliente.</p>
+  <p class="en-text" style="display:none;">Aero Lux was founded to provide high-quality air conditioning services with reliability and professionalism. Even as a growing company, we work with dedication to ensure customer satisfaction. Our priority is to deliver efficient, safe solutions tailored to each client's needs.</p>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <h2 class="pt-text">Entre em Contacto</h2>
+  <h2 class="en-text" style="display:none;">Contact Us</h2>
+  <p class="pt-text">Telefone: +351 000 000 000</p>
+  <p class="en-text" style="display:none;">Phone: +351 000 000 000</p>
+  <p class="pt-text">Email: aerolux@email.com</p>
+  <p class="en-text" style="display:none;">Email: aerolux@email.com</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <span class="pt-text">© 2026 AeroLux - Refrigeração e Climatização</span>
+  <span class="en-text" style="display:none;">© 2026 AeroLux - Refrigeration & Air Conditioning</span>
+</footer>
+
+<!-- WhatsApp -->
+<a class="whatsapp" href="https://wa.me/351SEUNUMERO">💬</a>
+
+<!-- Scripts -->
+<script>
+// Modal
+const modal = document.getElementById("budgetFormModal");
+const btn = document.getElementById("openFormBtn");
+const btnEn = document.getElementById("openFormBtnEn");
+const span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() { modal.style.display = "block"; }
+btnEn.onclick = function() { modal.style.display = "block"; }
+
+span.onclick = function() { modal.style.display = "none"; }
+
+window.onclick = function(event) {
+  if (event.target == modal) { modal.style.display = "none"; }
+}
+
+// Form submission
+document.getElementById("budgetForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  alert("Obrigado! O seu pedido de orçamento foi enviado."); // Could also translate dynamically if needed
+  modal.style.display = "none";
+  this.reset();
+});
+
+// Language Switch
+const ptBtn = document.getElementById("ptBtn");
+const enBtn = document.getElementById("enBtn");
+
+ptBtn.onclick = function() { switchLang('pt'); }
+enBtn.onclick = function() { switchLang('en'); }
+
+function switchLang(lang) {
+  const ptElements = document.querySelectorAll('.pt-text');
+  const enElements = document.querySelectorAll('.en-text');
+  
+  if(lang === 'pt') {
+    ptElements.forEach(el => el.style.display='block');
+    enElements.forEach(el => el.style.display='none');
+    ptBtn.classList.add('active');
+    enBtn.classList.remove('active');
+  } else {
+    ptElements.forEach(el => el.style.display='none');
+    enElements.forEach(el => el.style.display='block');
+    ptBtn.classList.remove('active');
+    enBtn.classList.add('active');
+  }
+}
+</script>
+
+</body>
+</html>
