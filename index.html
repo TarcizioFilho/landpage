@@ -77,13 +77,13 @@ nav a:hover { color:#3B82F6; }
 
 /* Hero */
 .hero {
-  height:90vh;
+  height: auto;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:20px;
+  padding:80px 8%;
   background: linear-gradient(180deg, #FFFFFF, #E5E7EB);
 }
 
@@ -128,7 +128,8 @@ h1, h2, h3, h4, h5, h6 {
   background:#F3F4F6;
   padding:35px;
   border-radius:12px;
-  width:280px;
+  width:100%;
+  max-width:280px;
   box-shadow:0 8px 20px rgba(59,130,246,0.3);
   border:1px solid #3B82F6;
   transition:0.3s;
@@ -207,6 +208,38 @@ footer { background:#000; color:#cbd5e1; text-align:center; padding:35px; border
 .close { color:#111827; float:right; font-size:28px; font-weight:bold; cursor:pointer; }
 .close:hover { color:#3B82F6; }
 
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 5%;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  nav a {
+    margin-left: 15px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 60px 5%;
+  }
+
+  .hero h1 { font-size: 28px; }
+  .hero p { font-size: 15px; }
+
+  .btn { font-size: 16px; padding: 12px 25px; }
+
+  .services h2,
+  .about h2,
+  .contact h2 { font-size: 28px; margin-bottom: 30px; }
+
+  .card { width: 100%; max-width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -222,7 +255,6 @@ footer { background:#000; color:#cbd5e1; text-align:center; padding:35px; border
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
-
     <span class="lang-switch">
       <button id="ptBtn" class="active">PT</button>
       <button id="enBtn">EN</button>
@@ -234,13 +266,13 @@ footer { background:#000; color:#cbd5e1; text-align:center; padding:35px; border
 <section class="hero">
   <h1 class="pt-text">Conforto e Climatização com Qualidade</h1>
   <h1 class="en-text" style="display:none;">Comfort and Quality Air Conditioning</h1>
-  
+
   <p class="pt-text">A Aero Lux é especializada em soluções de refrigeração e climatização para residências e empresas. Trabalhamos com instalação, manutenção e reparação de sistemas de ar condicionado, garantindo conforto, eficiência e qualidade.</p>
   <p class="en-text" style="display:none;">Aero Lux specializes in refrigeration and air conditioning solutions for homes and businesses. We provide installation, maintenance, and repair of air conditioning systems, ensuring comfort, efficiency, and quality.</p>
-  
+
   <button class="btn pt-text" id="openFormBtn">Pedir Orçamento</button>
   <button class="btn en-text" id="openFormBtnEn" style="display:none;">Request a Quote</button>
-  
+
   <button class="btn" onclick="window.location.href='https://wa.me/351SEUNUMERO'">Chat on WhatsApp</button>
 
   <!-- Modal Form -->
@@ -333,7 +365,6 @@ footer { background:#000; color:#cbd5e1; text-align:center; padding:35px; border
 <!-- WhatsApp -->
 <a class="whatsapp" href="https://wa.me/351SEUNUMERO">💬</a>
 
-<!-- Scripts -->
 <script>
 // Modal
 const modal = document.getElementById("budgetFormModal");
@@ -353,7 +384,7 @@ window.onclick = function(event) {
 // Form submission
 document.getElementById("budgetForm").addEventListener("submit", function(e){
   e.preventDefault();
-  alert("Obrigado! O seu pedido de orçamento foi enviado."); // Could also translate dynamically if needed
+  alert("Obrigado! O seu pedido de orçamento foi enviado.");
   modal.style.display = "none";
   this.reset();
 });
